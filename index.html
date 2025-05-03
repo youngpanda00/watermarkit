@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Image Watermarker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 200px;
+      padding-top: 50px;
+      background-color: #EFF1FA;
+    }
+    .upload-box {
+      border: 2px dashed #aaa;
+      padding: 40px;
+      text-align: center;
+      color: #777;
+      cursor: pointer;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      background-color: #FFFFFF;
+    }
+    .upload-box:hover {
+      border-color: #5171c3;
+      color: #333;
+    }
+    .label {
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    #imageList {
+      margin-top: 30px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      margin-bottom: 30px;
+      background-color: #FFFFFF;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background-color: #FFFFFF;
+    }
+    #watermarkPreview {
+      max-height: 100px;
+      margin: 5px;
+    }
+    .file-info {
+      font-size: 14px;
+      color: #777;
+    }
+    .watermark-text {
+      margin-bottom: 20px;
+    }
+    .color-picker {
+      margin-left: 10px;
+    }
+    #progressSection {
+      margin-top: 20px;
+      display: none;
+    }
+    #progressBar {
+      height: 20px;
+      background: #4caf50;
+      width: 0%;
+      transition: width 0.3s ease;;
+    }
+    #progressText {
+      margin-top: 5px;
+    }
+    .disabled {
+      background-color: #e0e0e0;
+      color: #b0b0b0;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Image Watermarker</h1>
+
+  <!-- Image Upload -->
+  <div class="upload-box" id="dropArea">
+    <p>📁 Drag your images here or click to upload</p>
+    <input type="file" id="imageInput" accept="image/*" multiple style="display: none;" />
+  </div>
+
+  <!-- Watermark Upload -->
+  <div class="upload-box" id="watermarkDrop">
+    <p>🖋️ Drag your watermark PNG here or click to upload</p>
+    <input type="file" id="watermarkInput" accept="image/png" style="display: none;" />
+    <div id="watermarkPreviewContainer" style="margin-top: 10px;"></div>
+  </div>
+
+  <!-- Or text watermark -->
+  <div class="watermark-text">
+    <label for="textWatermark">📝 Or enter text watermark:</label>
+    <input type="text" id="textWatermark" placeholder="Enter watermark text" style="width: 300px; margin-left: 10px;" />
+    <br/>
+    <label for="textColor">Select Text Color: </label>
+    <input type="color" id="textColor" value="#ffffff" class="color-picker"/>
+    <br/>
+   
+  </div>
+
+  <!-- Size Input Section -->
+  <div style="margin-top: 20px;">
+    <label for="maxWidth">Max Width (px):</label>
+    <input type="number" id="maxWidth" placeholder="Enter max width" style="width: 120px; margin-right: 20px;" />
+
+    <label for="maxHeight">Max Height (px):</label>
+    <input type="number" id="maxHeight" placeholder="Enter max height" style="width: 120px;" />
+  </div>
+
+  <!-- Image List -->
+  <div id="imageList" style="margin-top: 20px;">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <h2>Uploaded Images</h2>
+      <button id="removeAllButton" disabled>Remove All</button>
+    </div>
+    
+    <table id="imageTable">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Size</th>
+          <th>Uploaded On</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="imageTableBody"></tbody>
+    </table>
+  </div>
+
+  <!-- Progress Bar -->
+  <div id="progressSection">
+    <div style="background: #eee; border-radius: 5px; overflow: hidden;">
+      <div id="progressBar"></div>
+    </div>
+    <p id="progressText"></p>
+  </div>
+
+  <!-- Export Button -->
+  <button onclick="exportImages()">⬇️ Export as Zip</button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.0/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
