@@ -77,6 +77,11 @@ function handleWatermarkUpload(e) {
         <img id="watermarkPreview" src="${img.src}" alt="Watermark Preview" />
         <button onclick="removeWatermark()">❌ Remove Watermark</button>
       `;
+      
+      // 🔽 Hide the prompt
+      const prompt = document.getElementById("watermarkPrompt");
+      if (prompt) prompt.style.display = "none";
+      
       toggleWatermarkOptions("image");
     };
   } else {
@@ -86,8 +91,14 @@ function handleWatermarkUpload(e) {
 
 function removeWatermark() {
   watermark = null;
-  watermarkInput.value = ""; // ✅ reset file input
+  watermarkInput.value = "";
   watermarkPreviewContainer.innerHTML = "";
+
+  const prompt = document.getElementById("watermarkPrompt");
+  if (prompt) {
+    prompt.style.display = "block";
+    prompt.innerText = "🖋️ Drag your watermark PNG here or click to upload"; // Restore default prompt
+  }
 
   textWatermarkInput.disabled = false;
   textWatermarkInput.style.backgroundColor = "#ffffff";
@@ -98,6 +109,7 @@ function removeWatermark() {
   watermarkInput.style.backgroundColor = "#ffffff";
   watermarkDrop.style.backgroundColor = "#ffffff";
 }
+
 
 // 📝 Text watermark handler
 textWatermarkInput.addEventListener("input", () => {
@@ -147,7 +159,11 @@ function renderImageTable() {
 
   // Enable or disable "Remove All" button based on images array
   removeAllButton.disabled = images.length === 0;
+
+  // Show or hide the table container
+  document.getElementById("imageList").style.display = images.length > 0 ? "block" : "none";
 }
+
 
 // Remove image from list
 function removeImage(index) {
@@ -167,7 +183,6 @@ removeAllButton.addEventListener("click", () => {
 
 
 // Export images with correct dimensions and scaling logic
-// Export images with correct dimensions and scaling logic
 async function exportImages() {
   if (images.length === 0) {
     alert("Please upload images first!");
@@ -183,10 +198,16 @@ async function exportImages() {
   const maxHeight = parseInt(document.getElementById("maxHeight").value) || null;
 
   // Check if the input dimensions are valid
-  if ((maxWidth && maxWidth <= 0) || (maxHeight && maxHeight <= 0)) {
-    alert("Please input BOTH width and height for custom size.");
+  if ((maxWidth && !maxHeight) || (!maxWidth && maxHeight)) {
+    alert("Please enter both width and height for custom resizing, or leave both blank to use the original size.");
     return;
   }
+  
+  if ((maxWidth && maxWidth <= 0) || (maxHeight && maxHeight <= 0)) {
+    alert("Width and height must be positive numbers.");
+    return;
+  }
+  
 
   for (let i = 0; i < images.length; i++) {
     const { file, img } = images[i];
@@ -242,7 +263,7 @@ async function exportImages() {
       // Set canvas size based on the final calculated dimensions
       canvas.width = maxWidth;
       canvas.height = maxHeight;
-
+      
       // Draw the image centered within the canvas
       const offsetX = (maxWidth - width) / 2;
       const offsetY = (maxHeight - height) / 2;
@@ -266,40 +287,34 @@ async function exportImages() {
       // Draw the image to the canvas
       ctx.drawImage(img, 0, 0, width, height);
     }
+    const canvasWidth = canvas.width;
+    const canvasHeight = canvas.height;
 
     // Apply watermark based on input dimensions (independent of image size)
     if (watermark) {
-      const wmWidth = maxWidth * 0.67; // Watermark width to 2/3 of input width
-      const wmHeight = (watermark.height / watermark.width) * wmWidth; // Maintain aspect ratio
-
-      // Center watermark on the image
-      const wmX = (maxWidth - wmWidth) / 2;
-      const wmY = (maxHeight - wmHeight) / 2;
-
-      ctx.globalAlpha = 0.5; // Adjust watermark transparency
+      const wmWidth = canvasWidth * 0.67; // Use actual final canvas size
+      const wmHeight = (watermark.height / watermark.width) * wmWidth;
+      const wmX = (canvasWidth - wmWidth) / 2;
+      const wmY = (canvasHeight - wmHeight) / 2;
+    
+      ctx.globalAlpha = 0.5;
       ctx.drawImage(watermark, wmX, wmY, wmWidth, wmHeight);
-      ctx.globalAlpha = 1.0; // Reset transparency for other operations
+      ctx.globalAlpha = 1.0;
     } else if (textWatermarkInput.value.trim()) {
-      const wmWidth = maxWidth * 0.67; // Watermark width to 2/3 of input width
-      ctx.font = `${Math.round(wmWidth / 10)}px Arial`; // Text watermark is 2/3 of width
+      const wmWidth = canvasWidth * 0.67;
+      ctx.font = `${Math.round(wmWidth / 10)}px Arial`;
       ctx.fillStyle = textColorInput.value;
       ctx.textAlign = "center";
-
-      // Calculate the Y position based on text height
+    
       const textHeight = Math.round(wmWidth / 10);
-
-      // Split the text into multiple lines if it's too long
       const lines = wrapText(ctx, textWatermarkInput.value, wmWidth);
-
-      // Calculate the vertical starting point to center the text block
-      const textY = (maxHeight / 2) - (lines.length * textHeight / 2) + (textHeight / 3); // Center text vertically
-
-      // Draw each line of text
+      const textY = (canvasHeight / 2) - (lines.length * textHeight / 2) + (textHeight / 3);
+    
       lines.forEach((line, index) => {
-        ctx.fillText(line, maxWidth / 2, textY + index * textHeight);
+        ctx.fillText(line, canvasWidth / 2, textY + index * textHeight);
       });
     }
-
+    
     // Convert canvas to blob for zipping
     const blob = await new Promise(resolve => canvas.toBlob(resolve));
     zip.file(file.name, blob);

@@ -11,9 +11,15 @@
       padding-top: 50px;
       background-color: #EFF1FA;
     }
+
+    h1 {
+    font-size: 20px;
+    font-weight: 500;
+    }
+    
     .upload-box {
       border: 2px dashed #aaa;
-      padding: 40px;
+      padding: 30px;
       text-align: center;
       color: #777;
       cursor: pointer;
@@ -23,8 +29,13 @@
     }
     .upload-box:hover {
       border-color: #5171c3;
-      color: #333;
+      color: #5171c3;
+      
     }
+    .upload-box:hover svg path {
+      fill: #5171c3;
+    }
+
     .label {
       margin-bottom: 5px;
       font-weight: bold;
@@ -36,16 +47,19 @@
       width: 100%;
       border-collapse: collapse;
       margin-top: 20px;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
       background-color: #FFFFFF;
     }
     th, td {
       border: 1px solid #ddd;
       padding: 10px;
-      text-align: center;
+      text-align: left;
+      font-weight: 500;
+      
     }
     th {
       background-color: #FFFFFF;
+      
     }
     #watermarkPreview {
       max-height: 100px;
@@ -83,34 +97,76 @@
 </head>
 <body>
 
-  <h1>Image Watermarker</h1>
+  <h1>1. Upload image you want to add watermark</h1>
 
   <!-- Image Upload -->
-  <div class="upload-box" id="dropArea">
-    <p>📁 Drag your images here or click to upload</p>
-    <input type="file" id="imageInput" accept="image/*" multiple style="display: none;" />
-  </div>
+  <div class="upload-box" id="dropArea" style="text-align: center; padding-bottom: 10px;">
 
-  <!-- Watermark Upload -->
-  <div class="upload-box" id="watermarkDrop">
-    <p>🖋️ Drag your watermark PNG here or click to upload</p>
-    <input type="file" id="watermarkInput" accept="image/png" style="display: none;" />
-    <div id="watermarkPreviewContainer" style="margin-top: 10px;"></div>
+    <!-- Inline SVG icon -->
+    <svg t="1746348919145" class="icon" viewBox="0 0 1024 1024" version="1.1"
+      xmlns="http://www.w3.org/2000/svg" p-id="6863" width="50" height="50" fill="#666">
+      <path d="M512 309.312c-11.008 0-20.48 3.84-27.392 7.488-7.168 3.84-13.76 8.768-19.648 13.824a313.728 313.728 0 0 0-34.048 35.2c-9.792 11.648-19.328 23.744-27.392 34.048l-2.048 2.56c-9.088 11.584-15.296 19.392-19.072 23.232a32 32 0 1 0 45.888 44.608 403.2 403.2 0 0 0 23.552-28.288l1.92-2.432c8.192-10.496 17.024-21.696 25.984-32.32L480 407.04v275.712a32 32 0 0 0 64 0V406.976l0.256 0.256c8.96 10.624 17.792 21.824 26.048 32.32l1.92 2.432a403.2 403.2 0 0 0 23.488 28.288 32 32 0 1 0 45.888-44.608 366.016 366.016 0 0 1-19.072-23.232l-1.984-2.56c-8.128-10.304-17.664-22.4-27.456-33.984a313.792 313.792 0 0 0-33.984-35.264 113.664 113.664 0 0 0-19.712-13.824A58.432 58.432 0 0 0 512 309.312z" p-id="6864"></path>
+      <path d="M514.432 74.688h-4.864c-93.44 0-166.912 0-224.192 7.68-58.752 7.872-105.344 24.384-141.952 61.056-36.608 36.608-53.12 83.2-61.056 141.952-7.68 57.28-7.68 130.688-7.68 224.192v4.864c0 93.44 0 166.912 7.68 224.192 7.936 58.752 24.448 105.344 61.056 141.952 36.608 36.608 83.2 53.12 141.952 61.056 57.28 7.68 130.688 7.68 224.192 7.68h4.864c93.44 0 166.912 0 224.192-7.68 58.752-7.872 105.344-24.384 141.952-61.056 36.672-36.608 53.12-83.2 61.056-141.952 7.68-57.28 7.68-130.688 7.68-224.192v-4.864c0-93.44 0-166.912-7.68-224.192-7.872-58.752-24.384-105.344-61.056-141.952-36.608-36.672-83.2-53.12-141.952-61.056-57.28-7.68-130.688-7.68-224.192-7.68z m-325.76 113.92c22.72-22.72 53.568-35.84 105.216-42.816 52.544-7.04 121.664-7.104 218.112-7.104s165.568 0 218.112 7.104c51.648 6.976 82.496 20.096 105.216 42.88 22.784 22.72 35.968 53.568 42.88 105.216 7.04 52.544 7.104 121.664 7.104 218.112s0 165.568-7.104 218.112c-6.912 51.648-20.096 82.496-42.88 105.216-22.72 22.784-53.568 35.904-105.216 42.88-52.544 7.04-121.664 7.104-218.112 7.104s-165.568 0-218.112-7.104c-51.648-6.976-82.496-20.096-105.216-42.88-22.784-22.72-35.904-53.568-42.88-105.216-7.04-52.544-7.104-121.664-7.104-218.112s0-165.568 7.104-218.112c6.976-51.648 20.096-82.496 42.88-105.216z" p-id="6865"></path>
+    </svg>
+  
+    <!-- Description -->
+    <p>Drag your images here or click to upload</p>
+    
+    <!-- Hidden input -->
+    <input type="file" id="imageInput" accept="image/*" multiple style="display: none;" />
+
+    <div id="imageList" style="margin-top: 30px; display: none;">
+      <table id="imageTable" style="width: 100%;">
+        <thead>
+          <!-- First row with title and button -->
+          <tr>
+            <th colspan="4">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span>Uploaded Images</span>
+                <button id="removeAllButton" disabled>Remove All</button>
+              </div>
+            </th>
+          </tr>
+          
+          
+          <!-- Second row with column headers 
+          <tr>
+            <th>Title</th>
+            <th>Size</th>
+            <th>Uploaded On</th>
+            <th>Actions</th>
+          </tr>-->
+        </thead>
+        <tbody id="imageTableBody"></tbody>
+      </table>
+    </div>
+    
   </div>
+  
+  <h1>2. Add watermarker image or enter watermark text</h1>
+<!-- Watermark Upload -->
+<div class="upload-box" id="watermarkDrop">
+  <p id="watermarkPrompt">🖋️ Drag your watermark PNG here or click to upload</p>
+  <input type="file" id="watermarkInput" accept="image/png" style="display: none;" />
+  <div id="watermarkPreviewContainer" style="margin-top: 10px;"></div>
+</div>
+
 
   <!-- Or text watermark -->
   <div class="watermark-text">
-    <label for="textWatermark">📝 Or enter text watermark:</label>
-    <input type="text" id="textWatermark" placeholder="Enter watermark text" style="width: 300px; margin-left: 10px;" />
+    
+    <label for="textWatermark">Or enter text watermark:</label>
+    <input type="text" id="textWatermark" placeholder="Enter watermark text" style="width: 300px; margin-left: 10px; margin-right: 15px;" />
     <br/>
     <label for="textColor">Select Text Color: </label>
-    <input type="color" id="textColor" value="#ffffff" class="color-picker"/>
+    <input type="color" id="textColor" value="#ffffff" class="color-picker"  />
     <br/>
    
   </div>
 
+  <h1>3. Enter new dimension you prefer, or skip</h1>
   <!-- Size Input Section -->
-  <div style="margin-top: 20px;">
+  <div style="margin-top: 20px; padding-bottom: 10px;">
     <label for="maxWidth">Max Width (px):</label>
     <input type="number" id="maxWidth" placeholder="Enter max width" style="width: 120px; margin-right: 20px;" />
 
@@ -118,7 +174,7 @@
     <input type="number" id="maxHeight" placeholder="Enter max height" style="width: 120px;" />
   </div>
 
-  <!-- Image List -->
+  <!-- Image List 
   <div id="imageList" style="margin-top: 20px;">
     <div style="display: flex; justify-content: space-between; align-items: center;">
       <h2>Uploaded Images</h2>
@@ -137,6 +193,7 @@
       <tbody id="imageTableBody"></tbody>
     </table>
   </div>
+-->
 
   <!-- Progress Bar -->
   <div id="progressSection">
