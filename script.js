@@ -73,15 +73,13 @@ function handleWatermarkUpload(e) {
     img.onload = () => {
       watermark = img;
       watermarkPreviewContainer.innerHTML = `
-        <p>✅ Watermark uploaded: ${file.name}</p>
         <img id="watermarkPreview" src="${img.src}" alt="Watermark Preview" />
-        <button onclick="removeWatermark()">❌ Remove Watermark</button>
       `;
-      
+      // Show the X button
+      document.getElementById("removeWatermarkBtn").classList.add("visible");
       // 🔽 Hide the prompt
       const prompt = document.getElementById("watermarkPrompt");
       if (prompt) prompt.style.display = "none";
-      
       toggleWatermarkOptions("image");
     };
   } else {
@@ -93,18 +91,17 @@ function removeWatermark() {
   watermark = null;
   watermarkInput.value = "";
   watermarkPreviewContainer.innerHTML = "";
-
+  // Hide the X button
+  document.getElementById("removeWatermarkBtn").classList.remove("visible");
   const prompt = document.getElementById("watermarkPrompt");
   if (prompt) {
     prompt.style.display = "block";
     prompt.innerText = "🖋️ Drag your watermark PNG here or click to upload"; // Restore default prompt
   }
-
   textWatermarkInput.disabled = false;
   textWatermarkInput.style.backgroundColor = "#ffffff";
   textColorInput.disabled = false;
   textColorInput.style.backgroundColor = "#ffffff";
-
   watermarkInput.disabled = false;
   watermarkInput.style.backgroundColor = "#ffffff";
   watermarkDrop.style.backgroundColor = "#ffffff";

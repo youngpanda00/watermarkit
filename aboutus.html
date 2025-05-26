@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us - Allwatermarks</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #4F46E5;
+      --primary-hover: #4338CA;
+      --background: #F9FAFB;
+      --surface: #FFFFFF;
+      --text-primary: #111827;
+      --text-secondary: #6B7280;
+      --border: #E5E7EB;
+      --success: #10B981;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--background);
+      color: var(--text-primary);
+      line-height: 1.5;
+      /* max-width: 1200px; */
+      /* margin: 0 auto; */
+    }
+    .top-nav {
+      width: 100%;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 64px;
+      box-shadow: 0 1px 0 #ececec;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .nav-logo img {
+      height: 20px;
+      width: 150px;
+    }
+    .nav-tabs {
+      display: flex;
+      gap: 32px;
+      margin: 0 auto;
+    }
+    .nav-tab {
+      font-size: 1.1rem;
+      color: #222;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-tab.active, .nav-tab:hover {
+      background: #f0f4ff;
+      color: #4F46E5;
+    }
+    .about-container {
+      max-width: 540px;
+      margin: 60px auto 0 auto;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      padding: 40px 32px 32px 32px;
+      text-align: center;
+    }
+    .about-profile-img {
+      width: 170px;
+      height: 170px;
+      margin: -80px auto 24px auto;
+      display: block;
+
+    }
+    .about-content p {
+      font-size: 1.15rem;
+      color: #222;
+      margin-bottom: 18px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <nav class="top-nav">
+    <div class="nav-logo">
+      <img src="assets/images/Logo.png" alt="Allwatermarks Logo" />
+    </div>
+    <div class="nav-tabs">
+      <a href="index.html" class="nav-tab">Add Watermark</a>
+      <a href="aboutus.html" class="nav-tab active">About Us</a>
+    </div>
+  </nav>
+  <div class="about-container">
+    <img src="assets/images/hello.png" alt="Allwatermarks Bot" class="about-profile-img" />
+    <div class="about-content">
+      <p>
+        At Allwatermarks, we're on a mission to simplify your creative workflow. What started as a tool for adding watermarks to images in bulk has evolved into a powerful suite of tools designed to save you time and boost your productivity. Whether you're editing hundreds of photos or tweaking a single image, our platform helps you get the job done quickly and easily.
+      </p>
+      <p>
+        And we're just getting started! As we expand to offer even more creative tools, you can expect a seamless experience that grows with your needs. With Allwatermarks, you'll always have the right tool at your fingertips, making your image editing process faster, smoother, and a whole lot more fun.
+      </p>
+    </div>
+  </div>
+</body>
+</html>
