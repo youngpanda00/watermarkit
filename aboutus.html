@@ -37,6 +37,7 @@
       position: sticky;
       top: 0;
       z-index: 10;
+      gap: 24px;
     }
     .nav-logo img {
       height: 20px;
@@ -81,6 +82,26 @@
       margin-bottom: 18px;
       line-height: 1.6;
     }
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .lang-switcher select {
+      height: 32px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      font-size: 1rem;
+      padding: 0 8px;
+      background: #fff;
+      color: var(--text-primary);
+      cursor: pointer;
+    }
+    .lang-switcher svg {
+      width: 22px;
+      height: 22px;
+      color: var(--primary-color);
+    }
   </style>
 </head>
 <body>
@@ -89,20 +110,42 @@
       <img src="Assets/Images/Logo.png" alt="Allwatermarks Logo" />
     </div>
     <div class="nav-tabs">
-      <a href="index.html" class="nav-tab">Add Watermark</a>
-      <a href="aboutus.html" class="nav-tab active">About Us</a>
+      <a href="index.html" class="nav-tab" data-translate="addWatermark">Add Watermark</a>
+      <a href="aboutus.html" class="nav-tab active" data-translate="aboutUs">About Us</a>
+    </div>
+    <div class="lang-switcher" id="lang-switcher">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3c4.97 0 9 4.03 9 9s-4.03 9-9 9-9-4.03-9-9 4.03-9 9-9zm0 0v18m0-18C7.03 3 3 7.03 3 12c0 4.97 4.03 9 9 9m0-18c4.97 0 9 4.03 9 9 0 4.97-4.03 9-9 9"/></svg>
+      <select id="langSelect">
+        <option value="en">English</option>
+        <option value="zh">中文</option>
+        <option value="es">Español</option>
+        <option value="hi">हिंदी</option>
+        <option value="fr">Français</option>
+        <option value="ar">العربية</option>
+        <option value="ru">Русский</option>
+        <option value="pt">Português</option>
+        <option value="ja">日本語</option>
+        <option value="de">Deutsch</option>
+        <option value="ko">한국어</option>
+        <option value="it">Italiano</option>
+        <option value="vi">Tiếng Việt</option>
+        <option value="th">ภาษาไทย</option>
+        <option value="pl">Polski</option>
+      </select>
     </div>
   </nav>
   <div class="about-container">
     <img src="Assets/Images/hello.png" alt="Allwatermarks Bot" class="about-profile-img" />
     <div class="about-content">
-      <p>
+      <p id="aboutText1" data-translate="aboutText1">
         At Allwatermarks, we're on a mission to simplify your creative workflow. What started as a tool for adding watermarks to images in bulk has evolved into a powerful suite of tools designed to save you time and boost your productivity. Whether you're editing hundreds of photos or tweaking a single image, our platform helps you get the job done quickly and easily.
       </p>
-      <p>
+      <p id="aboutText2" data-translate="aboutText2">
         And we're just getting started! As we expand to offer even more creative tools, you can expect a seamless experience that grows with your needs. With Allwatermarks, you'll always have the right tool at your fingertips, making your image editing process faster, smoother, and a whole lot more fun.
       </p>
     </div>
   </div>
+
+  <script src="lang.js"></script>
 </body>
 </html>
