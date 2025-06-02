@@ -496,10 +496,9 @@
       color: var(--text-primary);
       cursor: pointer;
     }
-    .lang-switcher svg {
+    .lang-switcher img {
       width: 22px;
       height: 22px;
-      color: var(--primary-color);
     }
   </style>
 </head>
@@ -513,7 +512,7 @@
       <a href="aboutus.html" class="nav-tab">About Us</a>
     </div>
     <div class="lang-switcher" id="lang-switcher">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3c4.97 0 9 4.03 9 9s-4.03 9-9 9-9-4.03-9-9 4.03-9 9-9zm0 0v18m0-18C7.03 3 3 7.03 3 12c0 4.97 4.03 9 9 9m0-18c4.97 0 9 4.03 9 9 0 4.97-4.03 9-9 9-9zm0 0v18m0-18C7.03 3 3 7.03 3 12c0 4.97 4.03 9 9 9m0-18c4.97 0 9 4.03 9 9 0 4.97-4.03 9-9 9-9"/></svg>
+      <img src="Assets/Images/Language.svg" alt="Language" style="width: 22px; height: 22px;" />
       <select id="langSelect">
         <option value="en">English</option>
         <option value="zh">中文</option>
@@ -527,7 +526,6 @@
         <option value="de">Deutsch</option>
         <option value="ko">한국어</option>
         <option value="it">Italiano</option>
-        <option value="vi">Tiếng Việt</option>
         <option value="th">ภาษาไทย</option>
         <option value="pl">Polski</option>
       </select>
@@ -558,7 +556,7 @@
         </svg>
         <p class="upload-text" data-translate="dragImages">Drag your images here or click to upload</p>
       </div>
-      <input type="file" id="imageInput" accept="image/*" multiple style="display: none;" />
+      <input type="file" id="imageInput" accept="image/*,application/pdf" multiple style="display: none;" />
     </div>
     <div id="imageList" class="uploaded-list-container" style="display: none;">
       <table id="imageTable">
@@ -623,8 +621,6 @@
       <input type="range" id="watermarkRotation" min="-45" max="45" step="1" value="0" style="width: 120px;">
       <label for="watermarkOpacity" data-translate="opacity">Opacity: </label>
       <input type="range" id="watermarkOpacity" min="0.1" max="1" step="0.01" value="0.5" style="width: 120px;">
-      <button type="button" id="flipHorizontalBtn" style="height:32px;min-width:32px;" data-translate="flipH">Flip H</button>
-      <button type="button" id="flipVerticalBtn" style="height:32px;min-width:32px;" data-translate="flipV">Flip V</button>
       <label for="watermarkFont" data-translate="font">Font: </label>
       <select id="watermarkFont" style="height:32px;min-width:120px;">
         <option value="Arial">Arial</option>
@@ -663,6 +659,12 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.0/jszip.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script>
+    window.pdfjsLib = window['pdfjs-dist/build/pdf'];
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/pdf-lib/dist/pdf-lib.min.js"></script>
   <script src="script.js"></script>
   <script src="lang.js"></script>
 </body>

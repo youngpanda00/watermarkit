@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
       aboutUs: 'About Us',
       uploadImages: 'Upload Images',
       previewAdjust: 'Preview & Adjust Watermark',
-      dragImages: 'Drag your images here or click to upload',
+      dragImages: 'Drag your images or PDF here or click to upload',
       uploadedImages: 'Uploaded Images',
       removeAll: 'Remove All',
       watermarkText: 'Watermark Text',
@@ -31,7 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
       remove: 'Remove',
       enterWatermarkText: 'Enter watermark text',
       enterMaxWidth: 'Enter max width',
-      enterMaxHeight: 'Enter max height'
+      enterMaxHeight: 'Enter max height',
+      uploadPrompt: 'Drag your images or PDF here or click to upload'
     },
     zh: {
       addWatermark: '添加水印',
@@ -64,7 +65,8 @@ document.addEventListener('DOMContentLoaded', function() {
       remove: '移除',
       enterWatermarkText: '输入水印文字',
       enterMaxWidth: '输入最大宽度',
-      enterMaxHeight: '输入最大高度'
+      enterMaxHeight: '输入最大高度',
+      uploadPrompt: 'Drag your images or PDF here or click to upload'
     },
     es: {
       addWatermark: 'Agregar Marca de Agua',
@@ -97,7 +99,8 @@ document.addEventListener('DOMContentLoaded', function() {
       remove: 'Eliminar',
       enterWatermarkText: 'Ingrese el texto de la marca de agua',
       enterMaxWidth: 'Ingrese ancho máximo',
-      enterMaxHeight: 'Ingrese altura máxima'
+      enterMaxHeight: 'Ingrese altura máxima',
+      uploadPrompt: 'Drag your images or PDF here or click to upload'
     },
     hi: {
       addWatermark: 'वॉटरमार्क जोड़ें',
@@ -130,7 +133,8 @@ document.addEventListener('DOMContentLoaded', function() {
       remove: 'हटाएं',
       enterWatermarkText: 'वॉटरमार्क टेक्स्ट दर्ज करें',
       enterMaxWidth: 'अधिकतम चौड़ाई दर्ज करें',
-      enterMaxHeight: 'अधिकतम ऊंचाई दर्ज करें'
+      enterMaxHeight: 'अधिकतम ऊंचाई दर्ज करें',
+      uploadPrompt: 'Drag your images or PDF here or click to upload'
     },
     fr: {
       addWatermark: 'Ajouter un Filigrane',
@@ -163,7 +167,8 @@ document.addEventListener('DOMContentLoaded', function() {
       remove: 'Supprimer',
       enterWatermarkText: 'Entrez le texte du filigrane',
       enterMaxWidth: 'Entrez la largeur maximale',
-      enterMaxHeight: 'Entrez la hauteur maximale'
+      enterMaxHeight: 'Entrez la hauteur maximale',
+      uploadPrompt: 'Drag your images or PDF here or click to upload'
     },
     ar: {
       addWatermark: 'إضافة علامة مائية',
@@ -196,7 +201,8 @@ document.addEventListener('DOMContentLoaded', function() {
       remove: 'حذف',
       enterWatermarkText: 'أدخل نص العلامة المائية',
       enterMaxWidth: 'أدخل العرض الأقصى',
-      enterMaxHeight: 'أدخل الارتفاع الأقصى'
+      enterMaxHeight: 'أدخل الارتفاع الأقصى',
+      uploadPrompt: 'Drag your images or PDF here or click to upload'
     },
     ru: {
       addWatermark: 'Добавить водяной знак',
@@ -229,7 +235,8 @@ document.addEventListener('DOMContentLoaded', function() {
       remove: 'Удалить',
       enterWatermarkText: 'Введите текст водяного знака',
       enterMaxWidth: 'Введите максимальную ширину',
-      enterMaxHeight: 'Введите максимальную высоту'
+      enterMaxHeight: 'Введите максимальную высоту',
+      uploadPrompt: 'Drag your images or PDF here or click to upload'
     },
     pt: {
       addWatermark: 'Adicionar Marca d\'Água',
@@ -262,7 +269,8 @@ document.addEventListener('DOMContentLoaded', function() {
       remove: 'Remover',
       enterWatermarkText: 'Digite o texto da marca d\'água',
       enterMaxWidth: 'Digite a largura máxima',
-      enterMaxHeight: 'Digite a altura máxima'
+      enterMaxHeight: 'Digite a altura máxima',
+      uploadPrompt: 'Drag your images or PDF here or click to upload'
     },
     ja: {
       addWatermark: 'ウォーターマーク追加',
@@ -295,7 +303,8 @@ document.addEventListener('DOMContentLoaded', function() {
       remove: '削除',
       enterWatermarkText: 'ウォーターマークテキストを入力',
       enterMaxWidth: '最大幅を入力',
-      enterMaxHeight: '最大高さを入力'
+      enterMaxHeight: '最大高さを入力',
+      uploadPrompt: 'Drag your images or PDF here or click to upload'
     },
     de: {
       addWatermark: 'Wasserzeichen Hinzufügen',
@@ -328,7 +337,8 @@ document.addEventListener('DOMContentLoaded', function() {
       remove: 'Entfernen',
       enterWatermarkText: 'Wasserzeichen-Text eingeben',
       enterMaxWidth: 'Maximale Breite eingeben',
-      enterMaxHeight: 'Maximale Höhe eingeben'
+      enterMaxHeight: 'Maximale Höhe eingeben',
+      uploadPrompt: 'Drag your images or PDF here or click to upload'
     },
     ko: {
       addWatermark: '워터마크 추가',
@@ -361,7 +371,8 @@ document.addEventListener('DOMContentLoaded', function() {
       remove: '제거',
       enterWatermarkText: '워터마크 텍스트 입력',
       enterMaxWidth: '최대 너비 입력',
-      enterMaxHeight: '최대 높이 입력'
+      enterMaxHeight: '최대 높이 입력',
+      uploadPrompt: 'Drag your images or PDF here or click to upload'
     },
     it: {
       addWatermark: 'Aggiungi Filigrana',
@@ -390,11 +401,12 @@ document.addEventListener('DOMContentLoaded', function() {
       step3: '3. Anteprima & Regola Filigrana',
       prompt: '🖋️ Trascina qui il tuo PNG filigrana o clicca per caricare',
       aboutText1: 'In Allwatermarks, la nostra missione è semplificare il tuo flusso di lavoro creativo. Quello che è iniziato come uno strumento per aggiungere filigrane alle immagini in blocco si è evoluto in una potente suite di strumenti progettata per farti risparmiare tempo e aumentare la produttività. Che tu stia modificando centinaia di foto o regolando una singola immagine, la nostra piattaforma ti aiuta a portare a termine il lavoro in modo rapido e semplice.',
-      aboutText2: 'E siamo solo all\'inizio! Man mano che ampliamo la nostra offerta di strumenti creativi, puoi aspettarti un\'esperienza fluida che cresce con le tue esigenze. Con Allwatermarks, avrai sempre lo strumento giusto a portata di mano, rendendo il processo di editing delle immagini più veloce, più fluido e molto più divertente.',
+      aboutText2: 'E siamo solo all\'inizio! Man mano che ampliamo la nostra offerta di strumenti creativi, puoi aspektare pieno di esperienza fluida che cresce con le tue esigenze. Con Allwatermarks, avrai sempre lo strumento giusto a portata di mano, rendendo il processo di editing delle immagini più veloce, più fluido e molto più divertente.',
       remove: 'Rimuovi',
       enterWatermarkText: 'Inserisci il testo della filigrana',
       enterMaxWidth: 'Inserisci larghezza massima',
-      enterMaxHeight: 'Inserisci altezza massima'
+      enterMaxHeight: 'Inserisci altezza massima',
+      uploadPrompt: 'Drag your images or PDF here or click to upload'
     },
     th: {
       addWatermark: 'เพิ่มลายน้ำ',
@@ -427,7 +439,8 @@ document.addEventListener('DOMContentLoaded', function() {
       remove: 'ลบ',
       enterWatermarkText: 'ป้อนข้อความลายน้ำ',
       enterMaxWidth: 'ป้อนความกว้างสูงสุด',
-      enterMaxHeight: 'ป้อนความสูงสูงสุด'
+      enterMaxHeight: 'ป้อนความสูงสูงสุด',
+      uploadPrompt: 'Drag your images or PDF here or click to upload'
     },
     pl: {
       addWatermark: 'Dodaj Znak Wodny',
@@ -456,11 +469,12 @@ document.addEventListener('DOMContentLoaded', function() {
       step3: '3. Podgląd i Dostosuj Znak Wodny',
       prompt: '🖋️ Przeciągnij tutaj PNG znaku wodnego lub kliknij, aby przesłać',
       aboutText1: 'W Allwatermarks naszym celem jest uproszczenie Twojego kreatywnego przepływu pracy. To, co zaczęło się jako narzędzie do masowego dodawania znaków wodnych, przekształciło się w potężny zestaw narzędzi zaprojektowany, aby zaoszczędzić Twój czas i zwiększyć produktywność. Niezależnie od tego, czy edytujesz setki zdjęć, czy dostosowujesz jedno, nasza platforma pomaga szybko i łatwo wykonać zadanie.',
-      aboutText2: 'A to dopiero początek! W miarę jak rozszerzamy naszą ofertę narzędzi kreatywnych, możesz oczekiwać płynnego doświadczenia, które rośnie wraz z Twoimi potrzebami. Z Allwatermarks zawsze będziesz mieć odpowiednie narzędzie pod ręką, co sprawi, że proces edycji zdjęć będzie szybszy, płynniejszy i o wiele przyjemniejszy.',
+      aboutText2: 'A to dopiero początek! W miarę jak rozszerzamy naszą ofertę narzędzi kreatywnych, możesz aspektować płynnego doświadczenia, które rośnie wraz z Twoimi potrzebami. Z Allwatermarks zawsze będziesz mieć odpowiednie narzędzie pod ręką, co sprawi, że proces edycji zdjęć będzie szybszy, płynniejszy i o wiele przyjemniejszy.',
       remove: 'Usuń',
       enterWatermarkText: 'Wpisz tekst znaku wodnego',
       enterMaxWidth: 'Wpisz maksymalną szerokość',
-      enterMaxHeight: 'Wpisz maksymalną wysokość'
+      enterMaxHeight: 'Wpisz maksymalną wysokość',
+      uploadPrompt: 'Drag your images or PDF here or click to upload'
     }
   };
 
@@ -491,7 +505,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Update upload box prompt
     const uploadText = document.querySelector('.upload-text');
-    if (uploadText) uploadText.textContent = t.dragImages;
+    if (uploadText) uploadText.textContent = t.uploadPrompt;
     const watermarkPrompt = document.getElementById('watermarkPrompt');
     if (watermarkPrompt) watermarkPrompt.textContent = t.prompt;
 
@@ -578,7 +592,16 @@ document.addEventListener('DOMContentLoaded', function() {
   // Initialize language switcher
   const langSelect = document.getElementById('langSelect');
   if (langSelect) {
-    const savedLang = localStorage.getItem('lang') || 'en';
+    // List of supported language codes
+    const supportedLangs = Object.keys(translations);
+    // Try to get saved language
+    let savedLang = localStorage.getItem('lang');
+    // If not saved, detect from browser
+    if (!savedLang) {
+      const browserLang = (navigator.language || navigator.userLanguage || 'en').split('-')[0];
+      savedLang = supportedLangs.includes(browserLang) ? browserLang : 'en';
+      localStorage.setItem('lang', savedLang);
+    }
     langSelect.value = savedLang;
     setLanguage(savedLang);
     
